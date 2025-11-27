@@ -11,20 +11,34 @@ This project includes a simple PHP script that creates a symlink to a file and a
     git clone https://github.com/imadenugraha/php-symlink-fail-poc.git
     cd php-symlink-fail-poc
     ```
-2. Ensure you have a PHP environment set up.
-3. Run the script:
+2. Install dependencies using Composer:
     ```bash
-    php index.php
+    composer install
     ```
-4. Observe the output and any errors that may occur due to symlink handling.
-5. You can also modify the `helper/lib.php` file to add more helper functions as needed.
-6. To test the symlink functionality, you can create a symlink manually or use the provided script.
-7. Check the `README.md` for any updates or additional instructions.
+   Ensure you have Composer installed on your system.
+3. Make sure `deploy.php` is configured correctly with your server details. Update the host, remote user, and deploy path as needed:
+    ```php
+    host('your-server-ip')
+        ->set('remote_user', 'your-username')
+        ->set('deploy_path', '/path/to/deploy');
+    ```
+   Replace `your-server-ip`, `your-username`, and `/path/to/deploy` with your actual server details.
+4. Deploy the application using Deployer:
+    ```bash
+    vendor/bin/dep deploy
+    ```
+   This will set up the necessary environment and deploy the application to the specified host.
+5. Access the application in your web browser at `http://your-server-ip/index.php`.
+6. You should see the output from the application, which will demonstrate the symlink functionality.
+7. Deploy again and test the symlink behavior by accessing the `index.php` file.
 
 ## Files
 - `index.php`: The main script that demonstrates the symlink functionality.
 - `helper/lib.php`: Contains helper functions used in the project.
 - `README.md`: Documentation for the project.
+- `deploy.php`: Deployment script using Deployer.
+- `composer.json`: Composer configuration file for dependencies.
+- `composer.lock`: Lock file for Composer dependencies.
 
 ## License
 This project is licensed under the Apache License 2.0. See the LICENSE file for more details.
